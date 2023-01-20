@@ -13,4 +13,7 @@ export class Post {
 
   @Field({ defaultValue: false })
   published: boolean;
+
+  @Field()
+  authorId?: string;
 }

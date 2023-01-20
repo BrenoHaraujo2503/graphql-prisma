@@ -1,10 +1,11 @@
-import { Arg, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, FieldResolver, Mutation, Query, Resolver, Root } from "type-graphql";
 import { CreatePostInput } from "../dtos/inputs/posts/create-post-input";
 import { GetPostInput } from "../dtos/inputs/posts/get-user-input";
 import { Post } from "../dtos/models/post-model";
+import { User } from "../dtos/models/user-model";
 import { prisma } from "../libs/prisma";
 
-@Resolver()
+@Resolver(() => Post)
 export class PostResolver {
   @Query(() => [Post])
   async posts() {
@@ -36,5 +37,14 @@ export class PostResolver {
     })
 
     return post;
+  }
+
+  @FieldResolver(() => User)
+  async author(@Root() post: Post) {
+    return await prisma.user.findUnique({
+      where: {
+        id: post.authorId
+      }
+    })
   }
 }

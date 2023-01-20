@@ -29,6 +29,8 @@ type Mutation {
 }
 
 type Post {
+  author: User!
+  authorId: String!
   content: String!
   id: String!
   published: Boolean
