@@ -15,6 +15,10 @@ input CreateUserInput {
   name: String!
 }
 
+input GetUserInput {
+  id: String!
+}
+
 type Mutation {
   createPost(data: CreatePostInput!): Post!
   createUser(data: CreateUserInput!): User!
@@ -28,6 +32,7 @@ type Post {
 }
 
 type Query {
+  findById(data: GetUserInput!): User!
   posts: [Post!]!
   users: [User!]!
 }
