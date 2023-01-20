@@ -15,6 +15,10 @@ input CreateUserInput {
   name: String!
 }
 
+input GetPostInput {
+  id: String!
+}
+
 input GetUserInput {
   id: String!
 }
@@ -33,6 +37,7 @@ type Post {
 
 type Query {
   findById(data: GetUserInput!): User!
+  findPostInfoById(data: GetPostInput!): Post!
   posts: [Post!]!
   users: [User!]!
 }
