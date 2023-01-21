@@ -2,4 +2,4 @@
 
 ## Apenas projeto para estudos sobre GraphQL usando nestjs
 
-###### Apollo Server + Typegraphql?
+### Adicionar autenticação e desenvolver melhor o crud
